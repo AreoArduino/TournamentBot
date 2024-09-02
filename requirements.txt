@@ -1,0 +1,8 @@
+discord
+flask
+gunicorn
+sqlalchemy
+discord
+discord.ext
+discord.ui
+threading
