@@ -126,9 +126,10 @@ async def homepage(ctx):
     msg="TEAM DATA REGISTERED SO FAR!! \n ---------------- \n"
 
     for i in range(len(data)):
-        msg+=f'TEAM: {i+1} \nTEAM NAME: {data[i]['teamName']} \nMembers: '
-        for j in data[i]['members']:
-            msg+=f" {j[0]} "
+        dict=data[i]
+        msg+=f'TEAM: {i+1} \nTEAM NAME: { (dict['teamName']) } \nMembers: '
+        for j in dict['members']:
+            msg+=f" { (j[0])} "
         msg+="\n --------------- \n"    
 
     await ctx.reply(msg)
