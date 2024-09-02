@@ -105,6 +105,37 @@ class addMemberModal(discord.ui.Modal,title='Add a Member!'):
 
              
 
+@bot.command(name="teamdetails")
+async def homepage(ctx):
+    ID=ctx.message.author.mention
+    if(ID=="<@576071327983730709>" or ID=="<@928311581337608243>" ):
+        data=[]
+        TeamsData=ses.query(teams).order_by(teams.TEAM).all()
+        lastadded=0
+        for i in ses:
+            teamNumber=i.TEAM
+            membersObjects=ses.query(members).filter_by(TEAM=teamNumber)
+            data.append({'teamName':i.TEAMNAME,"members":[]})
+    
+            for j in membersObjects:
+                data[lastadded]['members'].append([j.DC,j.ID,j.RN])
+
+            lastadded+=1
+        lastadded=0 
+
+    msg="TEAM DATA REGISTERED SO FAR!! \n ---------------- \n"
+
+    for i in range(len(data)):
+        msg+=f'TEAM: {i+1} \nTEAM NAME: {data[i]['teamName']} \nMembers: '
+        for j in data[i]['members']:
+            msg+=f" {j[0]} "
+        msg+="\n --------------- \n"    
+
+    await ctx.reply(msg)
+    print(data)
+
+
+
         
 
 
