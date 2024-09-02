@@ -127,9 +127,11 @@ async def homepage(ctx):
 
     for i in range(len(data)):
         dict=data[i]
-        msg+=f'TEAM: {i+1} \nTEAM NAME: { (dict['teamName']) } \nMembers: '
+        teamname=dict['teamName']
+        msg+=f'TEAM: {i+1} \nTEAM NAME: { teamname } \nMembers: '
         for j in dict['members']:
-            msg+=f" { (j[0])} "
+            id=j[0]
+            msg+=f" { id } "
         msg+="\n --------------- \n"    
 
     await ctx.reply(msg)
