@@ -223,7 +223,7 @@ async def sureLeaveButtonClicked(interaction: discord.Interaction):
         ses.commit()
         await interaction.response.send_message("Left Team",ephemeral=True)
     else:
-        if(len(ses.query(members).filter_by(TEAM=ses.query(teams).filter_by(DC=interaction.user.mention).first().TEAM).all())==0):
+        if(len(ses.query(members).filter_by(TEAM=ses.query(teams).filter_by(DC=interaction.user.mention).first().TEAM).all())==1):
             ses.delete(ses.query(members).filter_by(DC=interaction.user.mention).first())
             ses.delete(ses.query(teams).filter_by(DC=interaction.user.mention).first())        
             ses.commit()
