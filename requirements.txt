@@ -3,4 +3,4 @@ flask
 gunicorn
 sqlalchemy
 discord
-threading
+thread6
